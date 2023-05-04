@@ -31,15 +31,37 @@ function Navbar() {
     const nomDesSalles = [
         "E01", "E02", "E06/E07", "E08", "E09", "E17", "E18", "E19",
         "ES1", "ES2", "ES4", "ES7", "ES8", "ES9"
-    ];
+    ]
+    const navigate = useNavigate()
+    const [salleCouranteIndex, setSalleCourante] = useState(0)
+
+    useEffect(() => {
+        const nomSalle = decodeURIComponent(window.location.pathname.replace('/salle/', ''));
+        const indexSalle = nomDesSalles.findIndex((nom) => nom === nomSalle);
+        if (indexSalle !== -1) {
+            setSalleCourante(indexSalle);
+        }
+    }, [nomDesSalles]);
+
+
+    const goToSallePrecedente = () => {
+        const newIndex = salleCouranteIndex === 0 ? nomDesSalles.length - 1 : salleCouranteIndex - 1;
+        setSalleCourante(newIndex);
+        navigate(`/salle/${encodeURIComponent(nomDesSalles[newIndex])}`);
+    }
+
+    const goToSalleSuivante = () => {
+        const newIndex = salleCouranteIndex === nomDesSalles.length - 1 ? 0 : salleCouranteIndex + 1;
+        setSalleCourante(newIndex);
+        navigate(`/salle/${encodeURIComponent(nomDesSalles[newIndex])}`);
+    }
+
+
     return (
         <nav>
-            <NavLink to="/" > Accueil </NavLink>
-            {nomDesSalles.map((salle, index) => (
-                <NavLink key={index} to={`/salle/${encodeURIComponent(salle)}`} >
-                    {salle}
-                </NavLink>
-            ))}
+            <NavLink to="/">Accueil</NavLink>
+            <button onClick={goToSallePrecedente}>&lt;</button>
+            <button onClick={goToSalleSuivante}>&gt;</button>
         </nav>
     );
 }
@@ -82,7 +104,7 @@ function Salles() {
                         key={index}
                 onClick={ () => {navigate(`/salle/${encodeURIComponent(salle)}`)} }
                 >
-                    { salle }
+                    { salle === "E06/E07" ? "E07" : salle }
                 </button>
             ))}
         </div>
@@ -96,8 +118,6 @@ function EmploiDuTempsSalle() {
     const [identifier, setIdentifier] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const week = 34;
-    //const width = 1000;
-    //const height = 550;
     const width = Math.floor(window.innerWidth * 0.8);
     const height = Math.floor(window.innerHeight * 0.7);
 
