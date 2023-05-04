@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 81vh;
 }
 
 .App-logo {
@@ -90,6 +91,7 @@ nav {
   background-color: #008080;
   color: white;
   padding: 10px;
+  text-align: center;
 }
 
 nav a {
@@ -98,6 +100,7 @@ nav a {
   margin-right: 10px;
   font-size: 1.4em;
   font-weight: bold;
+  width: 100%;
 }
 
 
@@ -113,10 +116,8 @@ nav a.active {
 
 
 
-
-
-
-footer {
+.footer {
+  position: sticky;
   background-color: #008080;
   color: white;
   padding: 5px;

@@ -29,14 +29,14 @@ function PageInconnue() {
 
 function Navbar() {
     const nomDesSalles = [
-        "E01", "E02", "E07", "E08", "E09", "E17", "E18", "E19",
+        "E01", "E02", "E06/E07", "E08", "E09", "E17", "E18", "E19",
         "ES1", "ES2", "ES4", "ES7", "ES8", "ES9"
     ];
     return (
         <nav>
             <NavLink to="/" > Accueil </NavLink>
             {nomDesSalles.map((salle, index) => (
-                <NavLink key={index} to={`/salle/${salle}`} >
+                <NavLink key={index} to={`/salle/${encodeURIComponent(salle)}`} >
                     {salle}
                 </NavLink>
             ))}
@@ -46,7 +46,7 @@ function Navbar() {
 
 function Footer() {
     return (
-        <footer>
+        <footer className="footer">
             <p>Projet Informatique.</p>
         </footer>
     );
@@ -70,7 +70,7 @@ function Accueil() {
  */
 function Salles() {
     const nomDesSalles = [
-        "E01","E02", "E07", "E08", "E09", "E17", "E18", "E19",
+        "E01","E02", "E06/E07", "E08", "E09", "E17", "E18", "E19",
         "ES1", "ES2", "ES4", "ES7", "ES8", "ES9"]
     const navigate = useNavigate()
 
@@ -80,7 +80,7 @@ function Salles() {
                 //classe css "salle-button" pour le style des boutons de salles
                 <button className="salle-button"
                         key={index}
-                onClick={ () => {navigate(`/salle/${salle}`)} }
+                onClick={ () => {navigate(`/salle/${encodeURIComponent(salle)}`)} }
                 >
                     { salle }
                 </button>
@@ -96,12 +96,15 @@ function EmploiDuTempsSalle() {
     const [identifier, setIdentifier] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const week = 34;
-    const width = 900;
-    const height = 800;
+    //const width = 1000;
+    //const height = 550;
+    const width = Math.floor(window.innerWidth * 0.8);
+    const height = Math.floor(window.innerHeight * 0.7);
+
 
     useEffect(() => {
         setIsLoading(true); // on indique que l'image est en train de charger
-        axios.get(`http://localhost:4000/salle/${nomSalle}`)
+        axios.get(`http://localhost:4000/salle/${encodeURIComponent(nomSalle)}`)
             .then(res => {
                 setIdSalle(res.data.id);
                 setIdentifier(res.data.ident);
