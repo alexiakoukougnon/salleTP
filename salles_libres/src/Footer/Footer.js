@@ -2,7 +2,7 @@ import './Footer.css'
 function Footer() {
     return (
         <footer className="footer">
-            <p>Projet Informatique.</p>
+            <p><a href="https://ent.univ-orleans.fr/" target="_blank" rel="noopener noreferrer">ENT Université d'Orléans</a></p>
         </footer>
     );
 }

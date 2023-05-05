@@ -5,3 +5,9 @@
     padding: 5px;
     text-align: center;
 }
+
+.footer a {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
