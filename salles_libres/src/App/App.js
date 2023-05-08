@@ -1,13 +1,30 @@
 import './App.css';
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, useNavigate} from "react-router-dom";
 import Navbar from '../Navbar/Navbar'
 import Accueil from "../Accueil/Accueil";
 import PageInconnue from "../PageInconnue/PageInconnue";
 import EmploiDuTempsSalle from "../EmploiDuTempsSalle/EmploiDuTempsSalle";
 import Footer from "../Footer/Footer";
+import {useEffect} from "react";
+import axios from "axios";
 
 
 function App() {
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/accueil`)
+            .then(res => {
+                sessionStorage.setItem('projectId', res.data.projectId);
+                sessionStorage.setItem('identifier', res.data.identifier);
+                sessionStorage.setItem('week', res.data.week);
+                sessionStorage.setItem('nbweeks', res.data.nbweeks)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+
     return (
         <>
             <Navbar/>
@@ -21,5 +38,7 @@ function App() {
         </>
     );
 }
+
+
 
 export default App;

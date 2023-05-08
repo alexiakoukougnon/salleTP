@@ -1,0 +1,89 @@
+.emploi-du-temps-button-droit {
+    background-color: #f0f0f0;
+    color: #008080;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+    transition: background-color 0.5s ease-in-out;
+    padding: 50px 10px;
+    font-size: 1em;
+    font-weight: bold;
+    flex-basis: 10%;
+    flex-grow: 0;
+    max-width: 75px;
+}
+
+.emploi-du-temps-button-gauche {
+    background-color: #f0f0f0;
+    color: #008080;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: background-color 0.5s ease-in-out;
+    padding: 50px 10px;
+    font-size: 1em;
+    font-weight: bold;
+    flex-basis: 10%;
+    flex-grow: 0;
+    max-width: 75px;
+}
+
+.emploi-du-temps-button:hover {
+    background-color: #008080;
+    color: white;
+}
+
+.emploi-du-temps-button:focus {
+    outline: none;
+}
+
+.emploi-du-temps-button:active {
+    background-color: #008080;
+    color: white;
+    transition: background-color 0.5s ease-in-out;
+    animation: button-click 1s;
+}
+
+@keyframes button-click {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+.emploi-du-temps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+
+
+
+.semaine {
+    background-color: #008080;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    flex: 1;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.semaine:hover {
+    background-color: #25c4c4;
+}
+

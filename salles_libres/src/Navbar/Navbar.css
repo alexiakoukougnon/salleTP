@@ -1,11 +1,11 @@
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #008080;
     color: white;
-    padding: 10px;
     text-align: center;
+    min-height: 6vh;
 }
 
 nav a {
@@ -14,7 +14,7 @@ nav a {
     margin-right: 10px;
     font-size: 1em;
     font-weight: bold;
-    width: 100%;
+    max-width: 150px;
 }
 
 nav a.active {
@@ -23,51 +23,4 @@ nav a.active {
     color: #008080;
     padding: 10px;
     border-radius: 5px;
-}
-
-nav a:first-child {
-    margin-right: auto;
-    margin-left: 10px;
-    width: 100px;
-}
-
-nav button {
-    background-color: white;
-    color: #008080;
-    border: none;
-    border-radius: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    transition: background-color 0.5s ease-in-out;
-    padding: 10px 20px;
-    font-size: 1em;
-    font-weight: bold;
-}
-
-nav button:hover {
-    background-color: #008080;
-    color: white;
-}
-
-nav button:focus {
-    outline: none;
-}
-
-nav button:active {
-    background-color: #008080;
-    color: white;
-    transition: background-color 0.5s ease-in-out;
-    animation: button-click 1s;
-}
-
-@keyframes button-click {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.95);
-    }
-    100% {
-        transform: scale(1);
-    }
 }
