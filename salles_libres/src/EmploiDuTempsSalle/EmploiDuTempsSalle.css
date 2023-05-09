@@ -2,3 +2,143 @@
     text-align: center;
     min-height: 85vh;
 }
+
+.semaineOuJour:hover{
+    background-color: #008080;
+    color: white;
+}
+
+
+.semaineOuJour:focus{
+    outline: none;
+}
+
+.semaineOuJour:active{
+    background-color: #008080;
+    color: white;
+    transition: background-color 0.5s ease-in-out;
+    animation: button-click 1s;
+}
+
+@keyframes button-click {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.semaineOuJour {
+    background-color: #d2d2d2;
+    border: none;
+    color: #008080;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    flex: 1;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+
+
+.emploi-du-temps-button-droit {
+    background-color: #f0f0f0;
+    color: #008080;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+    transition: background-color 0.5s ease-in-out;
+    padding: 50px 10px;
+    font-size: 1em;
+    font-weight: bold;
+    flex-basis: 10%;
+    flex-grow: 0;
+    max-width: 75px;
+}
+
+.emploi-du-temps-button-gauche {
+    background-color: #f0f0f0;
+    color: #008080;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+    transition: background-color 0.5s ease-in-out;
+    padding: 50px 10px;
+    font-size: 1em;
+    font-weight: bold;
+    flex-basis: 10%;
+    flex-grow: 0;
+    max-width: 75px;
+}
+
+.emploi-du-temps-button-gauche:hover,
+.emploi-du-temps-button-droit:hover{
+    background-color: #008080;
+    color: white;
+}
+
+.emploi-du-temps-button-gauche:focus,
+.emploi-du-temps-button-droit:focus{
+    outline: none;
+}
+
+.emploi-du-temps-button-gauche:active,
+.emploi-du-temps-button-droit:active{
+    background-color: #008080;
+    color: white;
+    transition: background-color 0.5s ease-in-out;
+    animation: button-click 1s;
+}
+
+@keyframes button-click {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+.emploi-du-temps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+
+
+
+.boutonPrecSuiv {
+    background-color: #008080;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    flex: 1;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.boutonPrecSuiv:hover {
+    background-color: #25c4c4;
+}

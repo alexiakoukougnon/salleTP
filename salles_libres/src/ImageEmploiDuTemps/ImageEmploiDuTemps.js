@@ -1,4 +1,4 @@
-import './ImageEmploiDuTemps.css'
+import '../EmploiDuTempsSalle/EmploiDuTempsSalle.css'
 import {useNavigate} from "react-router-dom"
 import {useEffect, useState} from "react"
 import moment from 'moment';
@@ -34,7 +34,6 @@ function ImageEmploiDuTemps(props) {
         setSemaineCourante(parseInt(sessionStorage.getItem('week')))
         setLundiCourant(moment().startOf('isoWeek'))
     }
-
 
     const goToSallePrecedente = () => {
         const newIndex = salleCouranteIndex === 0 ? nomDesSalles.length - 1 : salleCouranteIndex - 1
@@ -73,9 +72,9 @@ function ImageEmploiDuTemps(props) {
     return (
         <div>
             <div className="date">
-                <button className="semaine" onClick={goToSemainePrecedente}>Precedent</button>
+                <button className="boutonPrecSuiv" onClick={goToSemainePrecedente}>Precedent</button>
                 <span>{lundiCourant.format('DD/MM/YYYY')}</span>
-                <button className="semaine" onClick={goToSemaineSuivante}>Suivant</button>
+                <button className="boutonPrecSuiv" onClick={goToSemaineSuivante}>Suivant</button>
             </div>
             <div className="emploi-du-temps-container">
                 <button className="emploi-du-temps-button-gauche" onClick={goToSallePrecedente}>&lt;</button>
