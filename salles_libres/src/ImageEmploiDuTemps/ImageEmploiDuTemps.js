@@ -72,9 +72,9 @@ function ImageEmploiDuTemps(props) {
     return (
         <div>
             <div className="date">
-                <button className="boutonPrecSuiv" onClick={goToSemainePrecedente}>Precedent</button>
+                <button className="boutonPrecSuiv" onClick={goToSemainePrecedente}>Prec</button>
                 <span>{lundiCourant.format('DD/MM/YYYY')}</span>
-                <button className="boutonPrecSuiv" onClick={goToSemaineSuivante}>Suivant</button>
+                <button className="boutonPrecSuiv" onClick={goToSemaineSuivante}>Suiv</button>
             </div>
             <div className="emploi-du-temps-container">
                 <button className="emploi-du-temps-button-gauche" onClick={goToSallePrecedente}>&lt;</button>
