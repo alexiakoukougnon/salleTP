@@ -70,33 +70,35 @@ function ImageEmploiDuTempsJour(props) {
         if (semaineCourante < nbweeks) {
             if (jourEnChiffre === 6) { // si samedi on va à lundi
                 setSemaineCourante(semaineCourante + 1)
+                setIdPianoDay(jours[1].idPianoDay)
                 setJourEnChiffre(1)
-                setIdPianoDay(jours[jourEnChiffre].idPianoDay)
                 setJourCourant(jourCourant.clone().add(2,'days'))
             }
             else {
                 setJourEnChiffre(jourEnChiffre + 1)
-                setIdPianoDay(jours[jourEnChiffre].idPianoDay)
+                setIdPianoDay(jours[jourEnChiffre + 1].idPianoDay)
                 setJourCourant(jourCourant.clone().add(1,'days'))
             }
         }
     }
 
+
     const goToJourPrecedent = () => {
         if (semaineCourante > 0) {
             if (jourEnChiffre === 1) { // si lundi on va à samedi
                 setSemaineCourante(semaineCourante - 1)
+                setIdPianoDay(jours[6].idPianoDay)
                 setJourEnChiffre(6)
-                setIdPianoDay(jours[jourEnChiffre].idPianoDay)
                 setJourCourant(jourCourant.clone().subtract(2,'days'))
             }
             else {
                 setJourEnChiffre(jourEnChiffre - 1)
-                setIdPianoDay(jours[jourEnChiffre].idPianoDay)
+                setIdPianoDay(jours[jourEnChiffre - 1].idPianoDay)
                 setJourCourant(jourCourant.clone().subtract(1,'days'))
             }
         }
     }
+
 
     const imgUrl = `https://aderead.univ-orleans.fr/jsp/imageEt?identifier=${identifier}&projectId=${projectId}&idPianoWeek=${semaineCourante}&idPianoDay=${idPianoDay}&idTree=${idSalle}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169`
 

@@ -9,7 +9,7 @@ function EmploiDuTempsSalle() {
     const { nomSalle } = useParams()
     const [idSalle, setIdSalle] = useState("")
     const [isLoading, setIsLoading] = useState(true)
-    const [typeEDT, setTypeEDT] = useState("semaine"); // par défaut, on affiche l'emploi du temps de la semaine
+    const [typeEDT, setTypeEDT] = useState("semaine")// par défaut, on affiche l'emploi du temps de la semaine
 
     useEffect(() => {
         setIsLoading(true)// on indique que l'image est en train de charger
@@ -21,8 +21,8 @@ function EmploiDuTempsSalle() {
         else {
             axios.get(`http://localhost:5000/salle/${encodeURIComponent(nomSalle)}`)
                 .then(res => {
-                    sessionStorage.setItem(nomSalle, res.data.id); //on stocke l'id en session
-                    setIdSalle(res.data.id);
+                    sessionStorage.setItem(nomSalle, res.data.id) //on stocke l'id en session
+                    setIdSalle(res.data.id)
                 })
                 .catch(err => {
                     console.log(err)

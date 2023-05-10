@@ -1,13 +1,11 @@
 .footer {
     position: sticky;
-    background-color: #008080;
-    color: white;
     padding: 2px;
     text-align: center;
 }
 
 .footer a {
     font-weight: bold;
-    color: white;
+    color: #008080;
     text-decoration: none;
 }

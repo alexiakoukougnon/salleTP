@@ -7,6 +7,7 @@ import EmploiDuTempsSalle from "../EmploiDuTempsSalle/EmploiDuTempsSalle";
 import Footer from "../Footer/Footer";
 import {useEffect} from "react";
 import axios from "axios";
+import ToutesLesSalles from "../ToutesLesSalles/ToutesLesSalles";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/" element={<Accueil/>} />
                 <Route path="/accueil" element={<Accueil/>} />
                 <Route path="/salle/:nomSalle" element={<EmploiDuTempsSalle/>} />
+                <Route path="/lesSalles" element={<ToutesLesSalles/>} />
             </Routes>
             <Footer/>
         </>
