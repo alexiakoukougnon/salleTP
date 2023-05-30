@@ -44,7 +44,7 @@ function ToutesLesSalles() {
                 return Promise.resolve()
             } else {
                 return axios
-                    .get(`http://localhost:5000/salle/${encodeURIComponent(nomSalle)}`)
+                    .get(`http://localhost:7000/api/salle/${encodeURIComponent(nomSalle)}`)
                     .then(res => sessionStorage.setItem(nomSalle, res.data.id))
                     .catch(err => console.log(err))
             }

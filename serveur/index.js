@@ -3,11 +3,11 @@ const express = require("express")
 const path = require("path")
 const https = require('https')
 const app = express()
+const appAPI = express()
 const cors = require('cors')
 
-app.use(cors({
-  //origin: "*" vue par tout le monde
-  origin: "http://localhost:3000"
+appAPI.use(cors({
+  origin: "*" //vue par tout le monde
 }))
 
 app.use(express.static(path.join(__dirname + "/public")))
@@ -100,7 +100,7 @@ async function recupIdSalle(nomSalle) {
 /**
  * Retourne un json qui contien le nom de la salle et son id
  */
-app.get('/salle/:nomSalle', async (req, res) => {
+appAPI.get('/api/salle/:nomSalle', async (req, res) => {
   const nomSalle = req.params.nomSalle
   const idSalle = await recupIdSalle(nomSalle)
   console.log()
@@ -114,7 +114,7 @@ app.get('/salle/:nomSalle', async (req, res) => {
 /**
  * Retourne un json avec le projectId, week, identifier et nbweeks
  */
-app.get("/accueil", async (req, res) => {
+appAPI.get("/api/accueil", async (req, res) => {
   try {
     const identifier = await recupIdentifier()
     console.log()
@@ -134,7 +134,18 @@ app.get("/accueil", async (req, res) => {
 /**
  * Lance le serveur sur le port 5000
  */
-app.listen(5000, () => {
-  console.log("Serveur démarré sur le port 5000")
+appAPI.listen(7000, () => {
+  console.log("API démarrée sur le port 7000")
   initProjectIdEtSemaineEtNbWeeks()
 })
+
+
+app.listen(5000, () => {
+  console.log("Serveur démarré sur le port 5000")
+})
+
+
+// route catch-all pour rediriger vers l'application React.js
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public", "index.html"));
+});

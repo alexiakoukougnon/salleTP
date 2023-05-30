@@ -29,7 +29,7 @@ function EmploiDuTempsSalle() {
             setIsLoading(false)
         }
         else {
-            axios.get(`http://localhost:5000/salle/${encodeURIComponent(nomSalle)}`)
+            axios.get(`http://localhost:7000/api/salle/${encodeURIComponent(nomSalle)}`)
                 .then(res => {
                     sessionStorage.setItem(nomSalle, res.data.id) //on stocke l'id en session
                     setIdSalle(res.data.id)
