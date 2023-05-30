@@ -131,6 +131,11 @@ appAPI.get("/api/accueil", async (req, res) => {
   }
 })
 
+// route catch-all pour rediriger vers l'application React.js
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public", "index.html"));
+});
+
 /**
  * Lance le serveur sur le port 5000
  */
@@ -145,7 +150,3 @@ app.listen(5000, () => {
 })
 
 
-// route catch-all pour rediriger vers l'application React.js
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public", "index.html"));
-});
