@@ -7,14 +7,20 @@ Alexia
 
 ## Api intermediaire en nodejs
 ```
-Pour lancer l'applie il faut lancer le serveur
+Pour lancer le back
     cd serveur 
     node index.js
 ```
-## Site avec react
+## React
 ```
-Puis lancer le site
+Puis lancer le front
     cd salles_libres
     npm start
 ```
 
+## Pour lancer le site
+```
+Puis lancer le site
+    cd serveur 
+    node index.js
+```

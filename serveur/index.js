@@ -1,5 +1,6 @@
 const axios = require("axios")
 const express = require("express")
+const path = require("path")
 const https = require('https')
 const app = express()
 const cors = require('cors')
@@ -9,11 +10,16 @@ app.use(cors({
   origin: "http://localhost:3000"
 }))
 
+app.use(express.static(path.join(__dirname + "/public")))
 
 let week = ""
 let projectId = ""
 let nbweeks = ""
 
+/**
+ * Initalise le projectId, week et nbweeks en les recuperant de l'ade
+ * @returns {Promise<{week: string, projectId: string}|{week: (*|string), projectId: (*|string)}>}
+ */
 async function initProjectIdEtSemaineEtNbWeeks() {
   const url = "https://www.univ-orleans.fr/EDTWeb/?action=displayFilieres&composantes=SCT&filieres=12741"
   try {
@@ -37,6 +43,10 @@ async function initProjectIdEtSemaineEtNbWeeks() {
   }
 }
 
+/**
+ * Recuper l'identifier en recuperant un jsession et l'utilisant pour recuper un identifier
+ * @returns {Promise<*|string>}
+ */
 async function recupIdentifier() {
   const url = "https://aderead.univ-orleans.fr/jsp/custom/modules/plannings/direct_planning.jsp?days=0%2C1%2C2%2C3%2C4%2C5&displayConfName=ENT&height=700&login=etuWeb&password=&projectId=" 
   + projectId + "&resources=6402&showOptions=false&showPianoDays=false&showPianoWeeks=false&showTree=false&weeks=4"
@@ -64,6 +74,11 @@ async function recupIdentifier() {
   }
 }
 
+/**
+ * Recupere l'id d'une salle donnée
+ * @param nomSalle
+ * @returns {Promise<*|string>}
+ */
 async function recupIdSalle(nomSalle) {
   //url de aderead mais sans l'emploie du temps
   const url = "https://aderead.univ-orleans.fr/jsp/standard/gui/tree.jsp?login=etuWeb&password&projectId=" 
@@ -82,6 +97,9 @@ async function recupIdSalle(nomSalle) {
   }
 }
 
+/**
+ * Retourne un json qui contien le nom de la salle et son id
+ */
 app.get('/salle/:nomSalle', async (req, res) => {
   const nomSalle = req.params.nomSalle
   const idSalle = await recupIdSalle(nomSalle)
@@ -93,6 +111,9 @@ app.get('/salle/:nomSalle', async (req, res) => {
   })
 })
 
+/**
+ * Retourne un json avec le projectId, week, identifier et nbweeks
+ */
 app.get("/accueil", async (req, res) => {
   try {
     const identifier = await recupIdentifier()
@@ -110,6 +131,9 @@ app.get("/accueil", async (req, res) => {
   }
 })
 
+/**
+ * Lance le serveur sur le port 5000
+ */
 app.listen(5000, () => {
   console.log("Serveur démarré sur le port 5000")
   initProjectIdEtSemaineEtNbWeeks()

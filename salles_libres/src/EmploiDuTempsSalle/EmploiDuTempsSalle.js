@@ -5,12 +5,22 @@ import axios from "axios";
 import ImageEmploiDuTemps from "../ImageEmploiDuTemps/ImageEmploiDuTemps";
 import ImageEmploiDuTempsJour from "../ImageEmploiDuTempsJour/ImageEmploiDuTempsJour";
 
+
+/**
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function EmploiDuTempsSalle() {
     const { nomSalle } = useParams()
     const [idSalle, setIdSalle] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const [typeEDT, setTypeEDT] = useState("semaine")// par défaut, on affiche l'emploi du temps de la semaine
 
+    /**
+     * Prend le nom de la salle en parametre et va recuperer l'id de la salle
+     * soit l'id est deja enregistré en session soit on va le chercher dans l'api intermediaire
+     */
     useEffect(() => {
         setIsLoading(true)// on indique que l'image est en train de charger
         const storedIdSalle = sessionStorage.getItem(nomSalle); //on recupere l'id de la salle dans sessionStorage
@@ -33,6 +43,9 @@ function EmploiDuTempsSalle() {
         }
     }, [nomSalle])
 
+    /**
+     * Nous permet d'alterner entre une vue de l'emploie du temps par semaine et par jour
+     */
     const handleSwitchTypeEDT = () => {
         setTypeEDT((typePrecedent) => (typePrecedent === "jour" ? "semaine" : "jour"));
     }

@@ -4,12 +4,18 @@ import Navbar from '../Navbar/Navbar'
 import Accueil from "../Accueil/Accueil";
 import PageInconnue from "../PageInconnue/PageInconnue";
 import EmploiDuTempsSalle from "../EmploiDuTempsSalle/EmploiDuTempsSalle";
-import Footer from "../Footer/Footer";
 import {useEffect} from "react";
 import axios from "axios";
 import ToutesLesSalles from "../ToutesLesSalles/ToutesLesSalles";
 
 
+/**
+ * Composant principal de l'application.
+ * Gère la navigation et effectue une requête HTTP GET lors du montage initial du composant
+ * pour récupérer des données à stocker en session.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function App() {
 
     useEffect(() => {
@@ -32,11 +38,9 @@ function App() {
             <Routes>
                 <Route path="*" element={<PageInconnue/>} />
                 <Route path="/" element={<Accueil/>} />
-                <Route path="/accueil" element={<Accueil/>} />
                 <Route path="/salle/:nomSalle" element={<EmploiDuTempsSalle/>} />
-                <Route path="/lesSalles" element={<ToutesLesSalles/>} />
+                <Route path="/sallesTP" element={<ToutesLesSalles/>} />
             </Routes>
-            <Footer/>
         </>
     );
 }

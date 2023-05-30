@@ -1,6 +1,11 @@
 import './Salles.css'
 import {useNavigate} from "react-router-dom";
 
+/**
+ * Crée des boutons qui vont vers les salles à partir d'une liste de nom de salles informatiques
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function Salles() {
     const nomDesSalles = [
         "E01","E02", "E06/E07", "E08", "E09", "E17", "E18", "E19",

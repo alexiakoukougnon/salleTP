@@ -11,7 +11,7 @@ function ToutesLesSalles() {
     const week = sessionStorage.getItem('week')
     const nbweeks = sessionStorage.getItem('nbweeks')
     const width = Math.floor(window.innerWidth * 0.98)
-    const height= Math.floor(window.innerHeight * 0.7)
+    const height= Math.floor(window.innerHeight * 0.75)
     const [semaineCourante, setSemaineCourante] = useState(parseInt(week))
     const jours = [
         {jour: "dimanche", idPianoDay: "0"}, //pck JourActuel renvoe 0 pour diamanche
@@ -31,6 +31,10 @@ function ToutesLesSalles() {
     ]
     const [isLoading, setIsLoading] = useState(true)
     const [lesIdSalles, setLesIdSalles] = useState("")
+
+    /**
+     * On recupere les id des salles à partir de la session ou de l'api pour initialiser le parametre lesIdSalles de l'url
+     */
     useEffect(() => {
         setIsLoading(true)
 
@@ -56,6 +60,9 @@ function ToutesLesSalles() {
         })
     }, [])
 
+    /**
+     * Calcule le idpiano du jour suivant et la semaine si necessaire
+     */
     const goToJourSuivant = () => {
         if (semaineCourante < nbweeks) {
             if (jourEnChiffre === 6) { // si samedi on va à lundi
@@ -72,6 +79,9 @@ function ToutesLesSalles() {
         }
     }
 
+    /**
+     * Calcule le idpiano du jour precedente et la semaine si necessaire
+     */
     const goToJourPrecedent = () => {
         if (semaineCourante > 0) {
             if (jourEnChiffre === 1) { // si lundi on va à samedi
@@ -92,10 +102,10 @@ function ToutesLesSalles() {
 
     return (
         <div className="EmploiDuTempsSalle">
-            <h3>Toutes les salles</h3>
+            <h3>Emploie du temps des salles de TP</h3>
             <div>
                 <button className="boutonPrecSuiv" onClick={goToJourPrecedent}>Prec</button>
-                <span>{jourCourant.format('dddd D MMMM').replace(/^\w/, c => c.toUpperCase())}</span>
+                <span>{jourCourant.format('dddd D MMM').replace(/^\w/, c => c.toUpperCase())}</span>
                 <button className="boutonPrecSuiv" onClick={goToJourSuivant}>Suiv</button>
             </div>
             <div className="emploi-du-temps-container">

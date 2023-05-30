@@ -3,7 +3,12 @@ import {useNavigate} from "react-router-dom"
 import {useEffect, useState} from "react"
 import moment from 'moment';
 
-
+/**
+ * Affiche l'image de l'emploi du temps par semaine grace à l'id de la salle passé en param (props)
+ * @param props idsalle
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function ImageEmploiDuTemps(props) {
     const idSalle = props.idSalle
     const identifier = sessionStorage.getItem('identifier')
@@ -11,7 +16,7 @@ function ImageEmploiDuTemps(props) {
     const week = sessionStorage.getItem('week')
     const nbweeks = sessionStorage.getItem('nbweeks')
     const width = Math.floor(window.innerWidth * 0.8)
-    const height= Math.floor(window.innerHeight * 0.7)
+    const height= Math.floor(window.innerHeight * 0.75)
     const navigate = useNavigate()
     const [salleCouranteIndex, setSalleCourante] = useState(0)
     const [semaineCourante, setSemaineCourante] = useState(parseInt(week))
@@ -21,7 +26,9 @@ function ImageEmploiDuTemps(props) {
         "ES1", "ES2", "ES4", "ES7", "ES8", "ES9"
     ]
 
-
+    /**
+     * On initialise l'index de la salle pour passer au salles suivantes et precedentes dans l'ordre
+     */
     useEffect(() => {
         const nomSalle = decodeURIComponent(window.location.pathname.replace('/salle/', ''))
         const indexSalle = nomDesSalles.findIndex((nom) => nom === nomSalle)
@@ -30,11 +37,19 @@ function ImageEmploiDuTemps(props) {
         }
     }, [nomDesSalles])
 
+    /**
+     * Reinitialise la semaine courante et le Lundi courant
+     */
     const resetSemaineCouranteEtLundiCourant = () => {
         setSemaineCourante(parseInt(sessionStorage.getItem('week')))
         setLundiCourant(moment().startOf('isoWeek'))
     }
 
+    /**
+     * Navigue à la salle precedente grace à l'index
+     * et reinitialise le lundi et la semaine courante au cas ou on a regardé l'emploie du temmps
+     * d'une semaine ou un jour different
+     */
     const goToSallePrecedente = () => {
         const newIndex = salleCouranteIndex === 0 ? nomDesSalles.length - 1 : salleCouranteIndex - 1
         setSalleCourante(newIndex)
@@ -42,6 +57,11 @@ function ImageEmploiDuTemps(props) {
         resetSemaineCouranteEtLundiCourant()
     }
 
+    /**
+     * Navigue à la salle suivante grace à l'index
+     * et reinitialise le lundi et la semaine courante au cas ou on a regardé l'emploie du temmps
+     * d'une semaine ou un jour different
+     */
     const goToSalleSuivante = () => {
         const newIndex = salleCouranteIndex === nomDesSalles.length - 1 ? 0 : salleCouranteIndex + 1
         setSalleCourante(newIndex)
@@ -49,6 +69,9 @@ function ImageEmploiDuTemps(props) {
         resetSemaineCouranteEtLundiCourant()
     }
 
+    /**
+     * Ajoute 1 à la semaine courante s'arrête à la limite
+     */
     const goToSemaineSuivante = () => {
         if (semaineCourante < nbweeks) {
             setSemaineCourante(semaineCourante + 1)
@@ -57,6 +80,9 @@ function ImageEmploiDuTemps(props) {
         }
     }
 
+    /**
+     * Soustrait 1 à la semaine courante s'arrête à la 0
+     */
     const goToSemainePrecedente = () => {
         if (semaineCourante > 0) {
             setSemaineCourante(semaineCourante - 1);

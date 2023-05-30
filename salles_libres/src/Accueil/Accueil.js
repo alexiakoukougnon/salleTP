@@ -1,10 +1,16 @@
 import './Accueil.css'
 import Salles from "../Salles/Salles";
 
+/**
+ * Composant qui contient le nom des salles informatiques
+ * dans des boutons pour acceder a l'emploie du temps
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function Accueil() {
     return (
         <div className="Accueil">
-            <h1>Accueil</h1>
+            <h2>Emploie du temps des Salles de TP</h2>
             <Salles/>
         </div>
     );
