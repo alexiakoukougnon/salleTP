@@ -22,5 +22,5 @@ Puis lancer le front
 ```
 Puis lancer le site
     cd serveur 
-    node index.js
+    npm start
 ```
