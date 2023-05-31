@@ -1,6 +1,6 @@
 import '../EmploiDuTempsSalle/EmploiDuTempsSalle.css'
 import {useNavigate} from "react-router-dom"
-import {useEffect, useState} from "react"
+import {useEffect, useMemo, useState} from "react"
 import moment from 'moment';
 
 /**
@@ -21,10 +21,10 @@ function ImageEmploiDuTemps(props) {
     const [salleCouranteIndex, setSalleCourante] = useState(0)
     const [semaineCourante, setSemaineCourante] = useState(parseInt(week))
     const [lundiCourant, setLundiCourant] = useState(moment().startOf('isoWeek'))
-    const nomDesSalles = [
+    const nomDesSalles = useMemo(() => [
         "E01", "E02", "E06/E07", "E08", "E09", "E17", "E18", "E19",
         "ES1", "ES2", "ES4", "ES7", "ES8", "ES9"
-    ]
+    ], [])
 
     /**
      * On initialise l'index de la salle pour passer au salles suivantes et precedentes dans l'ordre

@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom"
-import {useEffect, useState} from "react"
+import {useEffect, useMemo, useState} from "react"
 import moment from 'moment';
 import 'moment/locale/fr';
 
@@ -26,10 +26,10 @@ function ImageEmploiDuTempsJour(props) {
     const navigate = useNavigate()
     const [salleCouranteIndex, setSalleCourante] = useState(0)
     const [semaineCourante, setSemaineCourante] = useState(parseInt(week))
-    const nomDesSalles = [
+    const nomDesSalles = useMemo(() => [
         "E01", "E02", "E06/E07", "E08", "E09", "E17", "E18", "E19",
         "ES1", "ES2", "ES4", "ES7", "ES8", "ES9"
-    ]
+    ], [])
     const jours = [
         {jour: "dimanche", idPianoDay: "0"}, //pck JourActuel renvoe 0 pour diamanche
         {jour: "lundi", idPianoDay: "0"},

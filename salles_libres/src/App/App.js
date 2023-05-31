@@ -1,5 +1,5 @@
 import './App.css';
-import {Routes, Route, useNavigate} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import Navbar from '../Navbar/Navbar'
 import Accueil from "../Accueil/Accueil";
 import PageInconnue from "../PageInconnue/PageInconnue";

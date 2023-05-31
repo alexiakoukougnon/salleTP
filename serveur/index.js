@@ -6,9 +6,7 @@ const app = express()
 const appAPI = express()
 const cors = require('cors')
 
-appAPI.use(cors({
-  origin: "*" //vue par tout le monde
-}))
+appAPI.use(cors())
 
 app.use(express.static(path.join(__dirname + "/public")))
 

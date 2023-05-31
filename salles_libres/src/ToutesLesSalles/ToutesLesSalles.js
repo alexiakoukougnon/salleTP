@@ -1,5 +1,4 @@
-import {useNavigate} from "react-router-dom"
-import {useEffect, useState} from "react"
+import {useEffect, useMemo, useState} from "react"
 import moment from 'moment';
 import 'moment/locale/fr';
 import axios from "axios";
@@ -25,10 +24,10 @@ function ToutesLesSalles() {
     const [jourCourant, setJourCourant] = useState(moment().startOf('day'))
     const [jourEnChiffre, setJourEnChiffre] = useState(new Date().getDay()) //renvoie un nombre compris entre 0 (dimanche) et 6 (samedi)
     const [idPianoDay, setIdPianoDay] = useState(jours[jourEnChiffre].idPianoDay)
-    const nomDesSalles = [
+    const nomDesSalles = useMemo(() => [
         "E01", "E02", "E06/E07", "E08", "E09", "E17", "E18", "E19",
         "ES1", "ES2", "ES4", "ES7", "ES8", "ES9"
-    ]
+    ], [])
     const [isLoading, setIsLoading] = useState(true)
     const [lesIdSalles, setLesIdSalles] = useState("")
 
@@ -58,7 +57,7 @@ function ToutesLesSalles() {
                 }).join(",")
             )
         })
-    }, [])
+    }, [nomDesSalles])
 
     /**
      * Calcule le idpiano du jour suivant et la semaine si necessaire
