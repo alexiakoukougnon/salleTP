@@ -19,7 +19,7 @@ import ToutesLesSalles from "../ToutesLesSalles/ToutesLesSalles";
 function App() {
 
     useEffect(() => {
-        axios.get(`http://localhost:7000/api/accueil`)
+        axios.get(`http://localhost:5000/api/accueil`)
             .then(res => {
                 sessionStorage.setItem('projectId', res.data.projectId);
                 sessionStorage.setItem('identifier', res.data.identifier);

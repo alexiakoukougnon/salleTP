@@ -3,10 +3,9 @@ const express = require("express")
 const path = require("path")
 const https = require('https')
 const app = express()
-const appAPI = express()
 const cors = require('cors')
 
-appAPI.use(cors())
+app.use(cors())
 
 app.use(express.static(path.join(__dirname + "/public")))
 
@@ -98,7 +97,7 @@ async function recupIdSalle(nomSalle) {
 /**
  * Retourne un json qui contien le nom de la salle et son id
  */
-appAPI.get('/api/salle/:nomSalle', async (req, res) => {
+app.get('/api/salle/:nomSalle', async (req, res) => {
   const nomSalle = req.params.nomSalle
   const idSalle = await recupIdSalle(nomSalle)
   console.log()
@@ -112,7 +111,7 @@ appAPI.get('/api/salle/:nomSalle', async (req, res) => {
 /**
  * Retourne un json avec le projectId, week, identifier et nbweeks
  */
-appAPI.get("/api/accueil", async (req, res) => {
+app.get("/api/accueil", async (req, res) => {
   try {
     const identifier = await recupIdentifier()
     console.log()
@@ -134,17 +133,11 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/public", "index.html"));
 });
 
-/**
- * Lance le serveur sur le port 5000
- */
-appAPI.listen(7000, () => {
-  console.log("API démarrée sur le port 7000")
-  initProjectIdEtSemaineEtNbWeeks()
-})
 
 
 app.listen(5000, () => {
-  console.log("Serveur démarré sur le port 5000")
+  console.log("Serveur et API démarré sur le port 5000")
+  initProjectIdEtSemaineEtNbWeeks()
 })
 
 
