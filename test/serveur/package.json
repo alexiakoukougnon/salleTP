@@ -7,6 +7,8 @@
     "start": "node serveur.js",
     "watch": "nodemon serveur.js",
     "client": "cd ../client && npm start",
+    "install-client": "cd ../client && npm install",
+    "tout-build": "npm run install-client && npm run build",
     "build": "cd ../client && npm run build"
   },
   "author": "",
