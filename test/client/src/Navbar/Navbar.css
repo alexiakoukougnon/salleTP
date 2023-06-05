@@ -1,0 +1,26 @@
+nav {
+    display: flex;
+    align-items: center;
+    background-color: #008080;
+    color: white;
+    text-align: center;
+    min-height: 6vh;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: 1em;
+    font-weight: bold;
+    max-width: 150px;
+}
+
+nav a.active {
+    font-weight: bold;
+    background-color: white;
+    color: #008080;
+    padding: 10px;
+    border-radius: 5px;
+}
