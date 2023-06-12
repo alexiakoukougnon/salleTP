@@ -22,5 +22,6 @@ Puis lancer le front
 ```
 Puis lancer le site
     cd serveur 
+    npm run tout-build
     npm start
 ```
