@@ -9,12 +9,12 @@ Alexia
 ```
 Pour lancer le back
     cd serveur 
-    node index.js
+    npm start
 ```
 ## React
 ```
 Puis lancer le front
-    cd salles_libres
+    cd client
     npm start
 ```
 

@@ -2,16 +2,24 @@
   "name": "serveur",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "serveur.js",
+  "homepage": "/occupation-salles-tp",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node serveur.js",
+    "watch": "nodemon serveur.js",
+    "client": "cd ../client && npm start",
+    "install-client": "cd ../client && npm install",
+    "tout-build": "npm run install-client && npm run build",
+    "build": "cd ../client && npm run build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.4.0",
-    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
