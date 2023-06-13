@@ -1,5 +1,5 @@
 import '../EmploiDuTempsSalle/EmploiDuTempsSalle.css'
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 import {useEffect, useMemo, useState} from "react"
 import moment from 'moment';
 
@@ -10,6 +10,7 @@ import moment from 'moment';
  * @constructor
  */
 function ImageEmploiDuTemps(props) {
+    const { nomSalle } = useParams()
     const idSalle = props.idSalle
     const identifier = sessionStorage.getItem('identifier')
     const projectId = sessionStorage.getItem('projectId')
@@ -30,7 +31,6 @@ function ImageEmploiDuTemps(props) {
      * On initialise l'index de la salle pour passer au salles suivantes et precedentes dans l'ordre
      */
     useEffect(() => {
-        const nomSalle = decodeURIComponent(window.location.pathname.replace('/salle/', ''))
         const indexSalle = nomDesSalles.findIndex((nom) => nom === nomSalle)
         if (indexSalle !== -1) {
             setSalleCourante(indexSalle)
