@@ -10,7 +10,7 @@ import Salles from "../Salles/Salles";
 function Accueil() {
     return (
         <div className="Accueil">
-            <h2>Emploie du temps des Salles de TP</h2>
+            <h2>Emploi du temps des Salles de TP</h2>
             <Salles/>
         </div>
     );

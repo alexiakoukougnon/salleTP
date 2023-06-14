@@ -41,7 +41,7 @@ function ToutesLesSalles() {
             if (storedIdSalle) {
                 return Promise.resolve()
             } else {
-                return window.fetch(`/occupation-salles-tp/api/salle/${encodeURIComponent(nomSalle)}`)
+                return window.fetch(`/api/salle/${encodeURIComponent(nomSalle)}`)
                         .then((res) => res.json())
                         .then((json) => {
                             sessionStorage.setItem(nomSalle, json.id)
@@ -104,7 +104,7 @@ function ToutesLesSalles() {
 
     return (
         <div className="EmploiDuTempsSalle">
-            <h3>Emploie du temps des salles de TP</h3>
+            <h3>Emploi du temps des salles de TP</h3>
             <div>
                 <button className="boutonPrecSuiv" onClick={goToJourPrecedent}>Prec</button>
                 <span>{jourCourant.format('dddd D MMM').replace(/^\w/, c => c.toUpperCase())}</span>
