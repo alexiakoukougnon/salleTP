@@ -35,6 +35,9 @@ function EmploiDuTempsSalle() {
                     setIdSalle(json.id)
                 })
                 .catch((error) => {
+                    console.log("nomSalle = " + nomSalle)
+                    console.log("idSalle = " + idSalle)
+                    console.log("idSession = " + sessionStorage.getItem(nomSalle))
                     console.log(error)
                 })
                 .finally(() => {
