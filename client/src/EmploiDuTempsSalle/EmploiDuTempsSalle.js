@@ -31,7 +31,7 @@ function EmploiDuTempsSalle() {
             window.fetch(`/occupation-salles-tp/api/salle/${encodeURIComponent(nomSalle)}`)
                 .then((res) => res.json())
                 .then((json) => {
-                    sessionStorage.setItem(nomSalle, json.id) //on stocke l'id en session
+                    sessionStorage.setItem(encodeURIComponent(nomSalle), json.id) //on stocke l'id en session
                     setIdSalle(json.id)
                 })
                 .catch((error) => {
