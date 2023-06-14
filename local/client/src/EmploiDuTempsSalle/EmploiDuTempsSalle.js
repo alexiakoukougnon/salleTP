@@ -23,6 +23,7 @@ function EmploiDuTempsSalle() {
     useEffect(() => {
         setIsLoading(true)// on indique que l'image est en train de charger
         const storedIdSalle = sessionStorage.getItem(nomSalle); //on recupere l'id de la salle dans sessionStorage
+        console.log("idsalle session = " + storedIdSalle)
         if (storedIdSalle) {
             setIdSalle(storedIdSalle) //si l'id est deja en session on l'utilise
             setIsLoading(false)

@@ -23,6 +23,7 @@ function EmploiDuTempsSalle() {
     useEffect(() => {
         setIsLoading(true)// on indique que l'image est en train de charger
         const storedIdSalle = sessionStorage.getItem(nomSalle); //on recupere l'id de la salle dans sessionStorage
+        console.log("idsalle session = " + storedIdSalle)
         if (storedIdSalle) {
             setIdSalle(storedIdSalle) //si l'id est deja en session on l'utilise
             setIsLoading(false)
@@ -31,13 +32,10 @@ function EmploiDuTempsSalle() {
             window.fetch(`/occupation-salles-tp/api/salle/${encodeURIComponent(nomSalle)}`)
                 .then((res) => res.json())
                 .then((json) => {
-                    sessionStorage.setItem(encodeURIComponent(nomSalle), json.id) //on stocke l'id en session
+                    sessionStorage.setItem(nomSalle, json.id) //on stocke l'id en session
                     setIdSalle(json.id)
                 })
                 .catch((error) => {
-                    console.log("nomSalle = " + nomSalle)
-                    console.log("idSalle = " + idSalle)
-                    console.log("idSession = " + sessionStorage.getItem(nomSalle))
                     console.log(error)
                 })
                 .finally(() => {
