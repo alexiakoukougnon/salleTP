@@ -29,7 +29,7 @@ function EmploiDuTempsSalle() {
             setIsLoading(false)
         }
         else {
-            window.fetch(`/api/salle/${encodeURIComponent(nomSalle)}`)
+            window.fetch(`/occupation-salles-tp/api/salle/${encodeURIComponent(nomSalle)}`)
                 .then((res) => res.json())
                 .then((json) => {
                     sessionStorage.setItem(nomSalle, json.id) //on stocke l'id en session
