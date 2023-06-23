@@ -2,8 +2,8 @@
   "name": "serveur",
   "version": "1.0.0",
   "description": "",
-  "homepage": "/occupation-salles-tp",
   "main": "serveur.js",
+  "homepage": "/occupation-salles-tp",
   "scripts": {
     "start": "node serveur.js",
     "watch": "nodemon serveur.js",
