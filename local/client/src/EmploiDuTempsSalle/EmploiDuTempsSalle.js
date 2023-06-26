@@ -21,6 +21,7 @@ function EmploiDuTempsSalle() {
      * soit l'id est deja enregistré en session soit on va le chercher dans l'api intermediaire
      */
     useEffect(() => {
+        console.log("nomSalle = " + nomSalle)
         setIsLoading(true)// on indique que l'image est en train de charger
         const storedIdSalle = sessionStorage.getItem(nomSalle); //on recupere l'id de la salle dans sessionStorage
         if (storedIdSalle) {

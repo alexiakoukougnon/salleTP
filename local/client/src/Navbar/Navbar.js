@@ -1,5 +1,6 @@
 import './Navbar.css'
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
+import {useState} from "react";
 
 /**
  * Deux liens l'un qui ramene vers l'accueil avec les salles informatiques
@@ -8,12 +9,30 @@ import {NavLink} from "react-router-dom"
  * @constructor
  */
 function Navbar() {
+    const [searchTerm, setSearchTerm] = useState('')
+    const navigate = useNavigate()
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        navigate(`/salle/${encodeURIComponent(searchTerm)}`)
+        setSearchTerm('')
+    }
+
     return (
         <nav>
             <NavLink to="/">Choix des salles</NavLink>
             <NavLink to="/sallesTP">Toutes les salles</NavLink>
+            <form onSubmit={handleSearch}>
+                <input
+                    type="text"
+                    placeholder="Rechercher une salle..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <button type="submit">Rechercher</button>
+            </form>
         </nav>
-    );
+    )
 }
 
 export default Navbar;
