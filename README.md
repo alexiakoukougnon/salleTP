@@ -25,3 +25,11 @@ Puis lancer le site
     npm run tout-build
     npm start
 ```
+
+##Pour lancer en local
+```
+    cd local/serveur 
+    npm start
+    'ouvrir un autre terminal toujours dans local/serveur'
+    npm run client
+```

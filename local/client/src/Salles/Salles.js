@@ -12,19 +12,24 @@ function Salles() {
         "ES1", "ES2", "ES4", "ES7", "ES8", "ES9"]
     const navigate = useNavigate()
 
+    const handleClick = (salle) => {
+        const salleUrl = encodeURIComponent(salle)
+        navigate(`/salle/${salleUrl}`)
+    }
+
     return (
         <div className="salle-container">
             {nomDesSalles.map((salle, index) => (
                 //classe css "salle-button" pour le style des boutons de salles
                 <button className="salle-button"
-                        key={index}
-                        onClick={ () => {navigate(`/salle/${encodeURIComponent(salle)}`)} }
+                    key={index}
+                    onClick={() => handleClick(salle)}
                 >
                     { salle === "E06/E07" ? "E07" : salle }
                 </button>
             ))}
         </div>
-    );
+    )
 }
 
 export default Salles;

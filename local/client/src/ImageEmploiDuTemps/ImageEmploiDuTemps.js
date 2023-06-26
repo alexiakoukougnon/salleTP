@@ -35,7 +35,7 @@ function ImageEmploiDuTemps(props) {
         if (indexSalle !== -1) {
             setSalleCourante(indexSalle)
         }
-    }, [nomDesSalles])
+    }, [])
 
     /**
      * Reinitialise la semaine courante et le Lundi courant
