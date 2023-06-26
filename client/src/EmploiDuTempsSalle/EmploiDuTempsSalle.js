@@ -31,13 +31,10 @@ function EmploiDuTempsSalle() {
             window.fetch(`/occupation-salles-tp/api/salle/${encodeURIComponent(nomSalle)}`)
                 .then((res) => res.json())
                 .then((json) => {
-                    sessionStorage.setItem(encodeURIComponent(nomSalle), json.id) //on stocke l'id en session
+                    sessionStorage.setItem(nomSalle, json.id) //on stocke l'id en session
                     setIdSalle(json.id)
                 })
                 .catch((error) => {
-                    console.log("nomSalle = " + nomSalle)
-                    console.log("idSalle = " + idSalle)
-                    console.log("idSession = " + sessionStorage.getItem(nomSalle))
                     console.log(error)
                 })
                 .finally(() => {
