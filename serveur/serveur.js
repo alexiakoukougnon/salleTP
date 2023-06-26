@@ -99,10 +99,9 @@ async function recupIdSalle(nomSalle) {
 /**
  * Retourne un json qui contien le nom de la salle et son id
  */
-app.get('/api/salle/:nomSalle', async (req, res) => {
-    const nomSalle = req.params.nomSalle
+app.get('/api/salle/*', async (req, res) => {
+    const nomSalle = req.params[0]
     const idSalle = await recupIdSalle(nomSalle)
-    console.log()
 
     res.send({
         nom: nomSalle,
