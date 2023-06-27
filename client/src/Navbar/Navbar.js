@@ -23,6 +23,7 @@ function Navbar() {
     ]
     const [searchTerm, setSearchTerm] = useState('')
     const navigate = useNavigate()
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const handleSearch = (e) => {
         e.preventDefault()
@@ -39,7 +40,7 @@ function Navbar() {
     };
 
     const handleWindowResize = () => {
-        setIsResponsive(window.innerWidth < 768);
+        setWindowWidth(window.innerWidth);
     };
 
     // Ajoute un écouteur d'événement pour détecter les changements de taille de fenêtre
@@ -53,8 +54,8 @@ function Navbar() {
 
     return (
         <>
-            <nav className={`navbar${isResponsive ? " responsive" : ""}`}>
-                {!isResponsive && (
+            <nav className={`navbar${isResponsive && windowWidth < 768 ? " responsive" : ""}`}>
+            {windowWidth > 768 && (
                     <>
                         <NavLink to="/">
                             <HomeIcon />
