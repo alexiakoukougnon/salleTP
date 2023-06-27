@@ -10,22 +10,31 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
     font-size: 1em;
     max-width: 150px;
 }
 
-nav a.active {
-    background-color: white;
-    color: #008080;
-    padding: 10px;
-    border-radius: 5px;
+nav form {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
 }
 
 nav input[type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-right: 5px;
+    margin-right: 0px;
+    width: 150px;
+}
+
+nav button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }

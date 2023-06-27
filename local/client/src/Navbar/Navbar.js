@@ -2,6 +2,9 @@ import './Navbar.css'
 import '../EmploiDuTempsSalle/EmploiDuTempsSalle.css'
 import {NavLink, useNavigate} from "react-router-dom"
 import {useState} from "react";
+import HomeIcon from '@mui/icons-material/Home';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import SearchIcon from '@mui/icons-material/Search';
 
 /**
  * Deux liens l'un qui ramene vers l'accueil avec les salles informatiques
@@ -24,17 +27,21 @@ function Navbar() {
     }
     return (
         <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/sallesTP">Calendar</NavLink>
-            <form onSubmit={handleSearch}>
-                <input
-                    type="text"
-                    placeholder="Rechercher une salle..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button className="boutonPrecSuiv" type="submit">Searh</button>
-            </form>
+            <NavLink to="/"><HomeIcon/></NavLink>
+            <NavLink to="/sallesTP"><CalendarMonthIcon/></NavLink>
+
+            <div>
+                <form onSubmit={handleSearch}>
+                    <input
+                        type="text"
+                        placeholder="Rechercher une salle..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <button type="submit"><SearchIcon/></button>
+                </form>
+            </div>
+
         </nav>
     )
 }

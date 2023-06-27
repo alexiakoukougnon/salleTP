@@ -125,6 +125,13 @@ function ImageEmploiDuTempsJour(props) {
         }
     }
 
+    /**
+     * Alerte quand on ne peut pas afficher l'image et redirige vers l'accueil
+     */
+    const handleImageError = () => {
+        window.alert("Une erreur s'est produite lors de la récupération de l'EDT de la salle.")
+        navigate("/")
+    }
 
     const imgUrl = `https://aderead.univ-orleans.fr/jsp/imageEt?identifier=${identifier}&projectId=${projectId}&idPianoWeek=${semaineCourante}&idPianoDay=${idPianoDay}&idTree=${idSalle}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1662920359936&displayConfId=169`
 
@@ -137,7 +144,7 @@ function ImageEmploiDuTempsJour(props) {
             </div>
             <div className="emploi-du-temps-container">
                 <button className="emploi-du-temps-button-gauche" onClick={goToSallePrecedente}>&lt;</button>
-                <img src={imgUrl} alt="Probleme lors du chargement de l'emploi du temps" />
+                <img src={imgUrl} alt="Probleme lors du chargement de l'emploi du temps" onError={handleImageError}/>
                 <button className="emploi-du-temps-button-droit" onClick={goToSalleSuivante}>&gt;</button>
             </div>
         </div>
