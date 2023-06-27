@@ -85,13 +85,18 @@ async function recupIdSalle(nomSalle) {
     try {
         const response = await axios.get(url, { httpsAgent: new https.Agent({ rejectUnauthorized: false }) })
         const data = response.data
-        const id = data.split(":check(")[2].split(", 'true')")[0]
-        console.log("Nom de la salle " + nomSalle )
-        console.log("Id de la salle = " + id)
-        return id
+        const hasData = data.includes(":check(")
+        if (hasData) {
+            const idSalle = data.split(":check(")[2].split(", 'true')")[0]
+            console.log("Nom de la salle " + nomSalle )
+            console.log("Id de la salle = " + idSalle)
+            return { idSalle, salleExistante: true }
+        } else {
+            return { idSalle: "", salleExistante: false }
+        }
     } catch (error) {
         console.log(error)
-        return ""
+        return { idSalle: "", salleExistante: false }
     }
 }
 
@@ -101,11 +106,12 @@ async function recupIdSalle(nomSalle) {
  */
 app.get('/api/salle/*', async (req, res) => {
     const nomSalle = req.params[0]
-    const idSalle = await recupIdSalle(nomSalle)
+    const { idSalle, salleExistante } = await recupIdSalle(nomSalle)
 
     res.send({
         nom: nomSalle,
         id: idSalle,
+        salleExistante: salleExistante,
     })
 })
 

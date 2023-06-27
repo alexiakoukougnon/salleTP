@@ -1,5 +1,5 @@
 import './EmploiDuTempsSalle.css'
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ImageEmploiDuTemps from "../ImageEmploiDuTemps/ImageEmploiDuTemps";
 import ImageEmploiDuTempsJour from "../ImageEmploiDuTempsJour/ImageEmploiDuTempsJour";
@@ -15,13 +15,13 @@ function EmploiDuTempsSalle() {
     const [idSalle, setIdSalle] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const [typeEDT, setTypeEDT] = useState("semaine")// par défaut, on affiche l'emploi du temps de la semaine
+    const navigate = useNavigate()
 
     /**
      * Prend le nom de la salle en parametre et va recuperer l'id de la salle
      * soit l'id est deja enregistré en session soit on va le chercher dans l'api intermediaire
      */
     useEffect(() => {
-        console.log("nomSalle = " + nomSalle)
         setIsLoading(true)// on indique que l'image est en train de charger
         const storedIdSalle = sessionStorage.getItem(nomSalle); //on recupere l'id de la salle dans sessionStorage
         if (storedIdSalle) {
@@ -32,11 +32,18 @@ function EmploiDuTempsSalle() {
             window.fetch(`/api/salle/${encodeURIComponent(nomSalle)}`)
                 .then((res) => res.json())
                 .then((json) => {
-                    sessionStorage.setItem(nomSalle, json.id) //on stocke l'id en session
-                    setIdSalle(json.id)
+                    if (json.salleExistante) { //on regarde si la salle donne une id
+                        sessionStorage.setItem(nomSalle, json.id) //on stocke l'id en session
+                        setIdSalle(json.id)
+                    } else {
+                        window.alert("Une erreur s'est produite lors de la récupération de l'EDT de la salle " + nomSalle)
+                        navigate("/") //redirige vers l'accueil
+                    }
                 })
                 .catch((error) => {
                     console.log(error)
+                    window.alert("Une erreur s'est produite lors de la récupération de l'EDT de la salle.")
+                    navigate("/") //redirige vers l'accueil
                 })
                 .finally(() => {
                     setIsLoading(false)// une fois que la requête est terminée, on indique que l'image a fini de charger

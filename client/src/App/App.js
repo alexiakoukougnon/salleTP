@@ -18,7 +18,7 @@ import ToutesLesSalles from "../ToutesLesSalles/ToutesLesSalles";
 function App() {
 
     useEffect( () => {
-        window.fetch("/occupation-salles-tp/api/accueil")
+        window.fetch("/api/accueil")
             .then((res) => res.json())
             .then((json) => {
                 sessionStorage.setItem('projectId', json.projectId)

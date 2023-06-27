@@ -1,4 +1,5 @@
 import './Navbar.css'
+import '../EmploiDuTempsSalle/EmploiDuTempsSalle.css'
 import {NavLink, useNavigate} from "react-router-dom"
 import {useState} from "react";
 
@@ -14,10 +15,13 @@ function Navbar() {
 
     const handleSearch = (e) => {
         e.preventDefault()
+        if (searchTerm.trim() === '') {
+            //si le champ de recherche est vide -> rien faire
+            return
+        }
         navigate(`/salle/${encodeURIComponent(searchTerm)}`)
         setSearchTerm('')
     }
-
     return (
         <nav>
             <NavLink to="/">Choix des salles</NavLink>
@@ -29,7 +33,7 @@ function Navbar() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button type="submit">Rechercher</button>
+                <button className="boutonPrecSuiv" type="submit">Rechercher</button>
             </form>
         </nav>
     )
