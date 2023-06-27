@@ -41,7 +41,7 @@ function ToutesLesSalles() {
             if (storedIdSalle) {
                 return Promise.resolve()
             } else {
-                return window.fetch(`/api/salle/${encodeURIComponent(nomSalle)}`)
+                return window.fetch(`/occupation-salles-tp/api/salle/${encodeURIComponent(nomSalle)}`)
                         .then((res) => res.json())
                         .then((json) => {
                             sessionStorage.setItem(nomSalle, json.id)

@@ -29,7 +29,7 @@ function EmploiDuTempsSalle() {
             setIsLoading(false)
         }
         else {
-            window.fetch(`/api/salle/${encodeURIComponent(nomSalle)}`)
+            window.fetch(`/occupation-salles-tp/api/salle/${encodeURIComponent(nomSalle)}`)
                 .then((res) => res.json())
                 .then((json) => {
                     if (json.salleExistante) { //on regarde si la salle donne une id
