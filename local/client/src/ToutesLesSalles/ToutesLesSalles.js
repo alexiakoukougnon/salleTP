@@ -104,7 +104,7 @@ function ToutesLesSalles() {
 
     return (
         <div className="EmploiDuTempsSalle">
-            <h3>Emploi du temps des salles de TP</h3>
+            <h3>EDT de toutes les salles de TP</h3>
             <div>
                 <button className="boutonPrecSuiv" onClick={goToJourPrecedent}>Prec</button>
                 <span>{jourCourant.format('dddd D MMM').replace(/^\w/, c => c.toUpperCase())}</span>

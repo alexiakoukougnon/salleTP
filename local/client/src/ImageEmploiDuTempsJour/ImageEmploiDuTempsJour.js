@@ -53,7 +53,7 @@ function ImageEmploiDuTempsJour(props) {
         if (indexSalle !== -1) {
             setSalleCourante(indexSalle)
         }
-    }, [nomDesSalles])
+    }, [nomDesSalles, nomSalle])
 
     /**
      * Reinitialise la semaine courante et le jour courant
