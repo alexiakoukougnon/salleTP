@@ -1,12 +1,11 @@
 import './App.css';
 import {Routes, Route} from "react-router-dom";
-import Navbar from '../Navbar/Navbar'
 import Accueil from "../Accueil/Accueil";
 import PageInconnue from "../PageInconnue/PageInconnue";
 import EmploiDuTempsSalle from "../EmploiDuTempsSalle/EmploiDuTempsSalle";
 import {useEffect} from "react";
 import ToutesLesSalles from "../ToutesLesSalles/ToutesLesSalles";
-
+import Navbar from "../Navbar/Navbar";
 
 /**
  * Composant principal de l'application.

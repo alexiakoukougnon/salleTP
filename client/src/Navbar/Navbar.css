@@ -1,31 +1,56 @@
-nav {
+.navbar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: #008080;
     color: white;
     text-align: center;
     min-height: 6vh;
+    padding: 0 20px; /* Ajout d'un espacement horizontal */
 }
 
-nav a {
+.navbar a {
     color: white;
     text-decoration: none;
     margin-right: 20px;
     margin-left: 20px;
     font-size: 1em;
+    font-weight: bold;
     max-width: 150px;
 }
 
-nav a.active {
+.navbar a.active {
+    font-weight: bold;
     background-color: white;
     color: #008080;
     padding: 10px;
     border-radius: 5px;
 }
 
+.menu-icon {
+    margin-left: auto;
+    margin-right: 10px; /* Ajout d'une marge à droite */
+}
+
+nav form {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
 nav input[type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-right: 5px;
+    margin-right: 0px;
+    width: 150px;
+}
+
+nav button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }

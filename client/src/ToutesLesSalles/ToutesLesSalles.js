@@ -1,6 +1,7 @@
 import {useEffect, useMemo, useState} from "react"
 import moment from 'moment';
 import 'moment/locale/fr';
+import {useNavigate} from "react-router-dom";
 
 
 function ToutesLesSalles() {
@@ -29,6 +30,7 @@ function ToutesLesSalles() {
     ], [])
     const [isLoading, setIsLoading] = useState(true)
     const [lesIdSalles, setLesIdSalles] = useState("")
+    const navigate = useNavigate()
 
     /**
      * On recupere les id des salles à partir de la session ou de l'api pour initialiser le parametre lesIdSalles de l'url
@@ -100,11 +102,19 @@ function ToutesLesSalles() {
         }
     }
 
+    /**
+     * Alerte quand on ne peut pas afficher l'image et redirige vers l'accueil
+     */
+    const handleImageError = () => {
+        window.alert("Une erreur s'est produite lors de la récupération de l'EDT de la salle.")
+        navigate("/")
+    }
+
     const newImgUrl = `https://aderead.univ-orleans.fr/jsp/imageEt?identifier=${identifier}&projectId=${projectId}&idPianoWeek=${semaineCourante}&idPianoDay=${idPianoDay}&idTree=${lesIdSalles}&width=${width}&height=${height}&lunchName=REPAS&displayMode=1057855&showLoad=false&ttl=1683668533248&displayConfId=175`
 
     return (
         <div className="EmploiDuTempsSalle">
-            <h3>Emploi du temps des salles de TP</h3>
+            <h3>EDT de toutes les salles de TP</h3>
             <div>
                 <button className="boutonPrecSuiv" onClick={goToJourPrecedent}>Prec</button>
                 <span>{jourCourant.format('dddd D MMM').replace(/^\w/, c => c.toUpperCase())}</span>
@@ -115,7 +125,7 @@ function ToutesLesSalles() {
                 {isLoading ? (
                     <p>Chargement de l'emploi du temps en cours patientez...</p>
                 ) : (
-                    <img src={newImgUrl} alt="Probleme lors du chargement de l'emploi du temps" />
+                    <img src={newImgUrl} alt="Probleme lors du chargement de l'emploi du temps" onError={handleImageError}/>
                 )}
 
             </div>

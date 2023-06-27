@@ -41,8 +41,6 @@ function EmploiDuTempsSalle() {
                 })
                 .catch((error) => {
                     console.log(error)
-                    window.alert("Une erreur s'est produite lors de la récupération de l'EDT de la salle.")
-                    navigate("/") //redirige vers l'accueil
                 })
                 .finally(() => {
                     setIsLoading(false)// une fois que la requête est terminée, on indique que l'image a fini de charger

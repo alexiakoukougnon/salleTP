@@ -16,7 +16,7 @@ function Accueil() {
             <Salles/>
 
             <p className="message">
-                Ici, vous pouvez consulter les emplois du temps des salles de TP du bâtiment informatique.
+                Consultez les emplois du temps des salles de TP du bâtiment informatique.
             </p>
 
         </div>
