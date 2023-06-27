@@ -26,7 +26,7 @@ Puis lancer le site
     npm start
 ```
 
-##Pour lancer en local
+## Pour lancer en local
 ```
     cd local/serveur 
     npm start
