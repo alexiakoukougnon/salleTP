@@ -36,7 +36,6 @@ function EmploiDuTempsSalle() {
                         sessionStorage.setItem(nomSalle, json.id) //on stocke l'id en session
                         setIdSalle(json.id)
                     } else {
-                        window.alert("Une erreur s'est produite lors de la récupération de l'EDT de la salle " + nomSalle)
                         navigate("/") //redirige vers l'accueil
                     }
                 })
@@ -49,7 +48,7 @@ function EmploiDuTempsSalle() {
                     setIsLoading(false)// une fois que la requête est terminée, on indique que l'image a fini de charger
                 })
         }
-    }, [nomSalle])
+    }, [nomSalle, navigate])
 
     /**
      * Nous permet d'alterner entre une vue de l'emploie du temps par semaine et par jour

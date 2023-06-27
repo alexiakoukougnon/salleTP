@@ -10,8 +10,15 @@ import Salles from "../Salles/Salles";
 function Accueil() {
     return (
         <div className="Accueil">
-            <h2>Emploi du temps des Salles de TP</h2>
+            <br/>
+            <h2>EDT : Occupation des Salles de TP</h2>
+            <br/>
             <Salles/>
+
+            <p className="message">
+                Ici, vous pouvez consulter les emplois du temps des salles de TP du bâtiment informatique.
+            </p>
+
         </div>
     );
 }

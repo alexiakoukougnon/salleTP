@@ -20,7 +20,7 @@ function Salles() {
                     key={index}
                     onClick={() => navigate(`/salle/${encodeURIComponent(nomDesSalles[index])}`)}
                 >
-                    { salle === "E06/E07" ? "E07" : salle }
+                    Salle <br/> { salle }
                 </button>
             ))}
         </div>

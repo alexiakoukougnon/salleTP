@@ -24,8 +24,8 @@ function Navbar() {
     }
     return (
         <nav>
-            <NavLink to="/">Choix des salles</NavLink>
-            <NavLink to="/sallesTP">Toutes les salles</NavLink>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/sallesTP">Calendar</NavLink>
             <form onSubmit={handleSearch}>
                 <input
                     type="text"
@@ -33,7 +33,7 @@ function Navbar() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button className="boutonPrecSuiv" type="submit">Rechercher</button>
+                <button className="boutonPrecSuiv" type="submit">Searh</button>
             </form>
         </nav>
     )

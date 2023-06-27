@@ -142,3 +142,8 @@
 .boutonPrecSuiv:hover {
     background-color: #25c4c4;
 }
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}

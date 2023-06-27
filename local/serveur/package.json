@@ -9,7 +9,8 @@
     "client": "cd ../client && npm start",
     "install-client": "cd ../client && npm install",
     "tout-build": "npm run install-client && npm run build",
-    "build": "cd ../client && npm run build"
+    "build": "cd ../client && npm run build",
+    "tache": "pm2 start serveur.js"
   },
   "author": "",
   "license": "ISC",
