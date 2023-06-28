@@ -12,7 +12,7 @@
     "tout-build": "npm run install-client && npm run build",
     "build": "cd ../client && npm run build",
     "tache": "pm2 start serveur.js",
-    "del-tache": "pm2 deleta all"
+    "del-tache": "pm2 delete all"
   },
   "author": "",
   "license": "ISC",
