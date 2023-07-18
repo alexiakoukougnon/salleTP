@@ -120,6 +120,7 @@ app.get('/api/salle/*', async (req, res) => {
  */
 app.get("/api/accueil", async (_, res) => {
     const identifier = await recupIdentifier()
+    await initProjectIdEtSemaineEtNbWeeks()
     console.log()
 
     res.send({
