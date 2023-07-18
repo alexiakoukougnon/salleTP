@@ -104,6 +104,13 @@ function ImageEmploiDuTempsJour(props) {
                 setJourCourant(jourCourant.clone().add(1,'days'))
             }
         }
+        else { //semaine courant = derniere semaine
+            if (jourEnChiffre !== 6) { // si pas samedi on ajoute un jour
+                setJourEnChiffre(jourEnChiffre + 1)
+                setIdPianoDay(jours[jourEnChiffre + 1].idPianoDay)
+                setJourCourant(jourCourant.clone().add(1,'days'))
+            }
+        }
     }
 
     /**
@@ -118,6 +125,13 @@ function ImageEmploiDuTempsJour(props) {
                 setJourCourant(jourCourant.clone().subtract(2,'days'))
             }
             else {
+                setJourEnChiffre(jourEnChiffre - 1)
+                setIdPianoDay(jours[jourEnChiffre - 1].idPianoDay)
+                setJourCourant(jourCourant.clone().subtract(1,'days'))
+            }
+        }
+        else { //semaine courant = premiere semaine
+            if (jourEnChiffre !== 1) { // si pas lundi on enleve un jour
                 setJourEnChiffre(jourEnChiffre - 1)
                 setIdPianoDay(jours[jourEnChiffre - 1].idPianoDay)
                 setJourCourant(jourCourant.clone().subtract(1,'days'))
